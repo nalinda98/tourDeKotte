@@ -1,471 +1,481 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>
-            Tour De Kotte
-        </title>
-        <meta charset="utf-8">
-        <!--CSS-->
-        
-        <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
-        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="css/style.css">
-        <link rel="stylesheet" type="text/css" href="css/animate.css">
-        <!--Google Fonts-->
-        <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Josefin+Sans" rel="stylesheet">
-                <style>
-                    .fb-feed-wrapper {
-                        background: #fff;
-                        padding: 40px 0;
-                        position: relative;
-                        z-index: 5;
-                    }
-                </style>
-    </head>
-        <body>
-                <div id="fb-root"></div>
-                <script async defer crossorigin="anonymous"
-                    src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v19.0&appId=966242223397117&autoLogAppEvents=1">
-                </script>
+<html lang="en">
+<head>
+<!DOCTYPE html>
+<html lang="en">
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Tour de Kotte | Cycling Heritage Trails</title>
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+	<style>
+		body {
+			font-family: 'Montserrat', Arial, sans-serif;
+			margin: 0;
+			background: #f5f5f5;
+			color: #222;
+		}
+		header {
+			background: #0b5d3b;
+			color: #fff;
+			padding: 18px 0;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			position: sticky;
+			top: 0;
+			z-index: 100;
+			box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+		}
+		.brand {
+			font-size: 2rem;
+			font-weight: bold;
+			margin-left: 32px;
+			letter-spacing: 1px;
+		}
+		nav {
+			margin-right: 32px;
+		}
+		nav a {
+			color: #fff;
+			margin: 0 16px;
+			text-decoration: none;
+			font-weight: 600;
+			transition: color 0.2s;
+		}
+		nav a:hover, nav a.active {
+			color: #ffd700;
+		}
+		.hero {
+			background: url('https://images.unsplash.com/photo-1507035895480-2b3156c31fc8?auto=format&fit=crop&w=1500&q=80') center/cover no-repeat;
+			min-height: 60vh;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
+			color: #fff;
+			position: relative;
+		}
+		.hero::after {
+			content: '';
+			position: absolute;
+			top: 0; left: 0; right: 0; bottom: 0;
+			background: rgba(11,93,59,0.45);
+			z-index: 1;
+		}
+		.hero-content {
+			position: relative;
+			z-index: 2;
+			max-width: 700px;
+			margin: 0 auto;
+		}
+		.hero h1 {
+			font-size: 3rem;
+			font-weight: 700;
+			margin-bottom: 18px;
+		}
+		.hero p {
+			font-size: 1.3rem;
+			margin-bottom: 32px;
+		}
+		.btn-main {
+			background: #ffd700;
+			color: #0b5d3b;
+			border: none;
+			padding: 14px 36px;
+			font-size: 1.1rem;
+			font-weight: bold;
+			border-radius: 30px;
+			cursor: pointer;
+			transition: background 0.2s, color 0.2s;
+			box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+		}
+		.btn-main:hover {
+			background: #0b5d3b;
+			color: #ffd700;
+		}
+		section {
+			padding: 64px 0 48px 0;
+			max-width: 1100px;
+			margin: 0 auto;
+		}
+		.section-title {
+			text-align: center;
+			font-size: 2.2rem;
+			font-weight: 700;
+			margin-bottom: 18px;
+			color: #0b5d3b;
+		}
+		.section-desc {
+			text-align: center;
+			color: #555;
+			margin-bottom: 40px;
+		}
+		.about-cards {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			gap: 32px;
+			margin-top: 32px;
+		}
+		.about-card {
+			background: #fff;
+			border-radius: 16px;
+			box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+			padding: 32px 24px;
+			flex: 1 1 260px;
+			max-width: 320px;
+			text-align: center;
+		}
+		.about-card i {
+			font-size: 2.5rem;
+			color: #0b5d3b;
+			margin-bottom: 16px;
+		}
+		/* Gallery */
+		.gallery-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+			gap: 18px;
+			margin-top: 32px;
+		}
+		.gallery-grid img {
+			width: 100%;
+			border-radius: 12px;
+			box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+			transition: transform 0.2s;
+			object-fit: cover;
+			height: 180px;
+		}
+		.gallery-grid img:hover {
+			transform: scale(1.04);
+		}
+		/* Timeline */
+		.timeline {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			gap: 32px;
+			margin-top: 32px;
+		}
+		.timeline-step {
+			background: #fff;
+			border-radius: 12px;
+			box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+			padding: 24px 18px;
+			min-width: 180px;
+			max-width: 220px;
+			text-align: center;
+		}
+		.timeline-step h3 {
+			color: #0b5d3b;
+			font-size: 1.3rem;
+			margin-bottom: 8px;
+		}
+		/* Contact */
+		.contact-wrap {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 32px;
+			justify-content: center;
+			margin-top: 32px;
+		}
+		.contact-form, .contact-info {
+			background: #fff;
+			border-radius: 12px;
+			box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+			padding: 32px 24px;
+			flex: 1 1 320px;
+			max-width: 400px;
+		}
+		.contact-form input, .contact-form textarea {
+			width: 100%;
+			padding: 12px;
+			margin-bottom: 16px;
+			border: 1px solid #ccc;
+			border-radius: 6px;
+			font-size: 1rem;
+			font-family: inherit;
+		}
+		.contact-form button {
+			width: 100%;
+			background: #0b5d3b;
+			color: #ffd700;
+			border: none;
+			padding: 12px;
+			font-size: 1.1rem;
+			border-radius: 6px;
+			font-weight: bold;
+			cursor: pointer;
+			transition: background 0.2s;
+		}
+		.contact-form button:hover {
+			background: #ffd700;
+			color: #0b5d3b;
+		}
+		.contact-info h3 {
+			margin-top: 0;
+			color: #0b5d3b;
+		}
+		/* Footer */
+		footer {
+			background: #0b5d3b;
+			color: #fff;
+			text-align: center;
+			padding: 24px 0 12px 0;
+			font-size: 1rem;
+			margin-top: 32px;
+		}
+		@media (max-width: 800px) {
+			.about-cards, .timeline, .contact-wrap {
+				flex-direction: column;
+				align-items: center;
+			}
+			section {
+				padding: 36px 0 24px 0;
+			}
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<div class="brand">Tour de Kotte</div>
+		<nav>
+			<a href="#home" class="active">Home</a>
+			<a href="#about">About</a>
+			<a href="#gallery">Gallery</a>
+			<a href="#timeline">Timeline</a>
+			<a href="#contact">Contact</a>
+		</nav>
+	</header>
+	<section class="hero" id="home">
+		<div class="hero-content">
+			<h1>Indo-Lanka Ramayana Cycling Expedition</h1>
+			<p>Connecting Sri Lanka and India through cycling tourism and heritage routes.</p>
+			<a href="#about" class="btn-main">Explore Expedition</a>
+		</div>
+	</section>
+	<section id="about">
+		<div class="section-title">About Tour de Kotte</div>
+		<div class="section-desc">International Ramayana Heritage Cycling Route</div>
+		<div class="about-cards">
+			<div class="about-card">
+				<i class="fa fa-map"></i>
+				<h3>Ramayana Trail</h3>
+				<p>Cycle through sacred Ramayana heritage locations in Sri Lanka including Seetha Amman Temple, Ravana Falls, and Divurumpola.</p>
+			</div>
+			<div class="about-card">
+				<i class="fa fa-bicycle"></i>
+				<h3>Cycling Tourism</h3>
+				<p>Promoting sustainable eco-tourism and international bicycle travel across Sri Lanka and India.</p>
+			</div>
+			<div class="about-card">
+				<i class="fa fa-globe"></i>
+				<h3>Cultural Unity</h3>
+				<p>Tour de Kotte promotes friendship and peace through cycling expeditions connecting cultures and communities.</p>
+			</div>
+		</div>
+	</section>
+	<section id="gallery">
+		<div class="section-title">Gallery</div>
+		<div class="section-desc">Moments from the cycling expeditions</div>
+		<div class="gallery-grid">
+			<img src="https://images.unsplash.com/photo-1520975922203-b3c4d1c36d4d?auto=format&fit=crop&w=600&q=80" alt="Cycling 1">
+			<img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Cycling 2">
+			<img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80" alt="Cycling 3">
+			<img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=600&q=80" alt="Cycling 4">
+			<img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=600&q=80" alt="Cycling 5">
+			<img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=600&q=80" alt="Cycling 6">
+		</div>
+	</section>
+	<section id="timeline">
+		<div class="section-title">Expedition Timeline</div>
+		<div class="timeline">
+			<div class="timeline-step">
+				<h3>2024</h3>
+				<p>Concept development of Indo-Lanka Ramayana Cycling Route.</p>
+			</div>
+			<div class="timeline-step">
+				<h3>2025</h3>
+				<p>Launch of Sri Lanka Ramayana heritage cycling expedition.</p>
+			</div>
+			<div class="timeline-step">
+				<h3>2026</h3>
+				<p>International cycling expedition connecting Sri Lanka and India.</p>
+			</div>
+		</div>
+	</section>
+	<section id="contact">
+		<div class="section-title">Contact Tour de Kotte</div>
+		<div class="contact-wrap">
+			<form class="contact-form">
+				<input type="text" placeholder="Your Name" required>
+				<input type="email" placeholder="Email" required>
+				<textarea placeholder="Message" rows="4" required></textarea>
+				<button type="submit">Send Message</button>
+			</form>
+			<div class="contact-info">
+				<h3>Tour de Kotte</h3>
+				<p>Sri Jayawardenepura Kotte<br>Sri Lanka</p>
+				<p>Email: info@tourdekotte.lk</p>
+				<p>Website: www.tourdekotte.lk</p>
+			</div>
+		</div>
+	</section>
+	<footer>
+		<p>© 2026 Tour de Kotte | Indo-Lanka Ramayana Cycling Expedition</p>
+	</footer>
+	<script>
+		// Navbar active link switching
+		const navLinks = document.querySelectorAll('nav a');
+		navLinks.forEach(link => {
+			link.addEventListener('click', function() {
+				navLinks.forEach(l => l.classList.remove('active'));
+				this.classList.add('active');
+			});
+		});
+		// Smooth scroll
+		document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+			anchor.addEventListener('click', function (e) {
+				const target = document.querySelector(this.getAttribute('href'));
+				if(target){
+					e.preventDefault();
+					target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+				}
+			});
+		});
+	</script>
+</body>
+</html>
+<h2 class="text-center mb-4">Upcoming Events</h2>
 
-                <header class="header" id="HOME">
-                 <!-- Navigation -->
-            
-            <nav class="navbar navbar-default navbar-fixed-top">
-              
-                
-                <div class="container">
-                  
-                    <!-- Brand and toggle get grouped for better mobile display -->
-                    <div class="navbar-header">
-                      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#loso-navbar-collapse-1" aria-expanded="false">
-                        <span class="sr-only">Toggle navigation</span>
-                                                                <h2 class="section-title">Riders & Community Stories</h2>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                      </button>
-                      <a class="navbar-brand" href="#">
-                          <!-- small size logo -->
-                          <img src="images/logobike.png" alt="logo">
+<ul class="list-group">
 
-                        </a>
-                    </div>
+<li class="list-group-item">National Unity Festival – July 2026</li>
+<li class="list-group-item">Youth Leadership Workshop – August 2026</li>
+<li class="list-group-item">Tour de Kotte Cycling Ride – September 2026</li>
 
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse" id="loso-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#HOME" class="nav-item">Home</a></li>
-                    <li><a href="#about" class="nav-item">About the Trail</a></li>
-                    <li><a href="#sri-lanka-route" class="nav-item">Sri Lanka Route</a></li>
-                    <li><a href="#india-route" class="nav-item">India Route</a></li>
-                    <li><a href="#timeline" class="nav-item">Timeline</a></li>
-                    <li><a href="#why-this-trail" class="nav-item">Partners</a></li>
-                    <li><a href="#contact-us" class="nav-item">Contact+</a></li>
-                    <li>
-                        <a href="index.html" class="btn btn-primary navbar-btn" style="margin-top:6px; color:#fff;">Main Page</a>
-                    </li>
-                </ul>
-                 
-                 
-                </div><!-- /.navbar-collapse -->
-              </div><!-- /.container-fluid -->
-</nav>
-          
-          
-          
-           <div class="header-overlay">
-               <div class="container">
-                   <div class="row">
-                    <div class="col-md-12">
-                        <!--Logo-->
-                        <div class="logo text-center">
-                            <img src="images/logobike.png" height="80px" width="80px" class="logoimg" />
-                        </div>
-                    </div>
-                    <div class="row">
-                    <div class="col-md-8 wow bounceIn">
-                        <div class="header-text">
-                            <h1>Indo–Lanka Ramayana Trail</h1>
-                            <p>
-                                A sacred cycling journey across ancient Ramayana landscapes<br>
-                                <strong>Connecting India &amp; Sri Lanka through heritage, faith, and slow travel</strong>
-                            </p>
-                        </div>
-                        <div class="header-btns">
-                            <a href="#ramayana-trail" class="scroll-prompt">
-                                Explore the Trail <i class="fa fa-angle-down wow bounceInUp"></i>
-                            </a>
-                            <a href="ramayana-trail.html" class="btn btn-success btn-3x" style="margin-top:15px;">
-                                Join the Pilgrimage Ride
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                       <div class="header-col">
-                        
-                         <form role="form" class="header-form">
-                            <h2>Ride With Us</h2>
-                             <div class="form-group">
-                                 <input type="text" placeholder="First Name" class="form-control input-3x">
-                             </div>
-                             <div class="form-group">
-                                 <input type="text" placeholder="Last Name" class="form-control input-3x">
-                             </div>
-                             <div class="form-group">
-                                 <input type="text" placeholder="E-Mail Address" class="form-control input-3x">
-                             </div>
-                             <div class="form-group">
-                                 <button type="submit" class="btn btn-primary btn-3x">Join the Ride <span>&raquo;</span></button>
-                                <button type="submit" class="btn btn-primary btn-3x">Send Data</button>
-                             </div>
-                         </form>
-                       </div>
-                        
-                    </div>
-                </div>
-                </div>
-                   <div class="row"></div>
-               </div>
-           </div>
-       </header>
-                                                                <div class="fb-feed-wrapper">
-    <div class="container" style="margin-top: 40px;">
-        <h2 class="section-title text-center">Latest on Facebook</h2>
-        <p class="under-heading text-center">Updates from Tour de Kotte</p>
+</ul>
 
-        <div class="fb-page"
-                 data-href="https://www.facebook.com/Tourdekotte/"
-                 data-tabs="timeline"
-                 data-width="500"
-                 data-height="700"
-                 data-small-header="false"
-                 data-hide-cover="false"
-                 data-show-facepile="true">
-        </div>
-    </div>
 </div>
-       <!--Section About Ramayana Trail-->
-       <section id="about">
-           <div class="section-about">
-               <div class="container">
-                   <div class="row">
-                       <div class="col-md-12 wow bounceIn">
-                           <h2 class="section-title">About the Ramayana Trail</h2>
-                           <p class="under-heading">A journey beyond distance — faith, culture, and unity</p>
-                       </div>
-                   </div>
-               </div>
-               <div class="section-wrapper">
-                   <div class="container">
-                       <div class="row">
-                           <div class="col-md-4 wow bounceInDown">
-                               <h3 class="heading">Sacred Heritage</h3>
-                               <p class="col-caption">The trail connects Ramayana-linked temples, forests, villages, and ancient capitals, preserving shared cultural memory across generations in India and Sri Lanka.</p>
-                           </div>
-                           <div class="col-md-4 wow bounceInDown">
-                               <h3 class="heading">Pilgrimage Cycling</h3>
-                               <p class="col-caption">A slow, non-motorised pilgrimage where cycling becomes a spiritual discipline, allowing riders to experience landscapes with humility, endurance, and reflection.</p>
-                           </div>
-                           <div class="col-md-4 wow bounceInRight">
-                               <h3 class="heading">Community &amp; Unity</h3>
-                               <p class="col-caption">Local communities, youth groups, and institutions become active partners, hosting riders and sustaining the trail through shared ownership and pride.</p>
-                           </div>
-                       </div>
-                   </div>
-               </div>
-           </div>
-       </section>
 
-       <!-- Indo–Lanka Ramayana Trail Section -->
-       <section id="ramayana-trail" class="ramayana-section">
-           <div class="container">
-               <div class="row">
-                   <div class="col-md-12 wow bounceIn">
-                       <h2 class="section-title">🌏 Indo–Lanka Ramayana Trail</h2>
-                       <p class="under-heading">A sacred journey on two wheels</p>
-                   </div>
-               </div>
-               <div class="row">
-                   <div class="col-md-10 col-md-offset-1">
-                       <div class="ramayana-content">
-                           <p>The Indo–Lanka Ramayana Trail is a cross-border cultural and spiritual cycling initiative tracing sacred locations associated with the Ramayana across India and Sri Lanka.</p>
+</section>
 
-                           <p>Designed as a slow pilgrimage, the trail promotes cultural diplomacy, environmental responsibility, and people-to-people connections.</p>
+<!-- MAP -->
 
-                           <ul>
-                               <li>Strengthening India–Sri Lanka cultural ties</li>
-                               <li>Promoting non-motorised pilgrimage tourism</li>
-                               <li>Supporting local communities and livelihoods</li>
-                               <li>Preserving Ramayana-linked heritage landscapes</li>
-                           </ul>
+<section class="section bg-light" id="mapsection">
 
-                           <p><strong>Sri Lankan Route Highlight:</strong><br>
-                           Kankesanthurai → Sri Jayawardenepura Kotte<br>
-                           Passing temples, villages, forests, and ancient capitals associated with Lanka Pura.</p>
+<div class="container">
 
-                           <div class="text-center" style="margin: 30px 0 0 0;">
-                               <a href="Indo-Lanka_Ramayana_Trail_Concept_90_Day_Plan.pdf" class="btn btn-primary btn-lg">
-                                   Download Concept Note (PDF)
-                               </a>
-                           </div>
+<h2 class="text-center mb-4">Kotte Map</h2>
 
-                       </div>
-                   </div>
-               </div>
-           </div>
-       </section>
+<div id="map"></div>
 
-        <!-- Trail Map Section -->
-        <section id="trail-map" class="trail-map-section">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="container">
-                            <h2 class="section-title">The Ramayana Trail Route</h2>
-                            <p class="lead">Route description and key stops</p>
+</div>
 
-                            <h4 id="sri-lanka-route">Sri Lanka Route</h4>
-                            <ul>
-                                <li><strong>Kankesanthurai</strong></li>
-                                <li><strong>Seetha Eliya</strong></li>
-                                <li><strong>Ravana Ella</strong></li>
-                                <li><strong>Munneswaram</strong></li>
-                                <li><strong>Sri Jayawardenepura Kotte</strong></li>
-                            </ul>
+</section>
 
-                            <h4 id="india-route">India Route</h4>
-                            <ul>
-                                <li><strong>Ayodhya</strong></li>
-                                <li><strong>Chitrakoot</strong></li>
-                                <li><strong>Panchavati (Nashik)</strong></li>
-                                <li><strong>Kishkindha (Hampi)</strong></li>
-                                <li><strong>Rameswaram / Nagapattinam</strong></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="map-image text-center" style="padding:30px;">
-                            <img src="images/ramayana-route-map.jpg" alt="Ramayana Trail Map" class="img-responsive" style="max-width:100%;">
-                            <p class="text-muted">Map placeholder — replace with interactive map if available.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+<!-- NEWS -->
 
-        <section class="performer-section" id="performers">
-            <div class="performer wow flipInY">
-                <div class="performer-overlay">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <h2 class="section-title">Voices from the Journey</h2>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="section-wrapper">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div id="carousel-performer" class="carousel slide" data-ride="carousel">
-                                        <ol class="carousel-indicators">
-                                            <li data-target="#carousel-performer" data-slide-to="0" class="active"></li>
-                                            <li data-target="#carousel-performer" data-slide-to="1"></li>
-                                            <li data-target="#carousel-performer" data-slide-to="2"></li>
-                                        </ol>
-                                        <div class="carousel-inner" role="listbox">
-                                            <div class="item active">
-                                                <img src="images/avatar_01.jpg" alt="Rider01">
-                                                <div class="performer-caption">
-                                                    <h2>Pilgrimage Rider</h2>
-                                                    <p>Cycling the Ramayana Trail is a journey of endurance and devotion, connecting sacred places and people across borders.</p>
-                                                </div>
-                                            </div>
-                                            <div class="item">
-                                                <img src="images/avatar_02.jpg" alt="Rider02">
-                                                <div class="performer-caption">
-                                                    <h2>Pilgrimage Rider</h2>
-                                                    <p>Cycling the Ramayana Trail is a journey of endurance and devotion, connecting sacred places and people across borders.</p>
-                                                </div>
-                                            </div>
-                                            <div class="item">
-                                                <img src="images/avatar_03.jpg" alt="Rider03">
-                                                <div class="performer-caption">
-                                                    <h2>Pilgrimage Rider</h2>
-                                                    <p>Cycling the Ramayana Trail is a journey of endurance and devotion, connecting sacred places and people across borders.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+<section class="section" id="news">
 
-        <section class="why-us" id="timeline">
-            <div class="section-timeline">
-                <div class="container">
-                    <h2 class="heading">Our<span class="bold-green"> Timeline</span></h2>
-                    <p class="lead under-heading text-center">Look at our timer</p>
-                    <ul class="timeline">
-                        <li>
-                            <div class="timeline-badge"><span class="counteryear">2016</span></div>
-                            <div class="timeline-panal wow bounceIn">
-                                <div class="timeline-heading">
-                                    <h4 class="timeline-title">4500 Tours <span class="blue-underline"> Done</span> </h4>
-                                    <p><small class="text-muted"><i class="fa fa-clock-o"></i> 11 hours ago via Twitter </small></p>
-                                </div>
-                                <div class="timeline-body"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor aliquam fugiat excepturi neque est modi ex dolores eaque esse optio commodi, animi similique ut iure nesciunt consectetur sed eos ad.</p></div>
-                            </div><!--end of timeline panel-->
-                        </li>
-                        
-                        <li class="timeline-inverted">
-                            <div class="timeline-badge"><span class="counteryear">2015</span></div>
-                            <div class="timeline-panal  wow bounceIn">
-                                <div class="timeline-heading">
-                                    <h4 class="timeline-title"><span class="blue-underline">100,000</span> Tours Completed</h4>
-                                    <p><small class="text-muted"><i class="fa fa-clock-o" aria-hidden="true"></i> 11 hours ago via Twitter </small></p>
-                                </div>
-                                <div class="timeline-body"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor aliquam fugiat excepturi neque est modi ex dolores eaque esse optio commodi, animi similique ut iure nesciunt consectetur sed eos ad.</p></div>
-                            </div><!--end of timeline panel-->
-                        </li>
-                        
-                        <li>
-                            <div class="timeline-badge"><span class="counteryear">2014</span></div>
-                            <div class="timeline-panal wow bounceIn">
-                                <div class="timeline-heading">
-                                    <h4 class="timeline-title"><span class="blue-underline">3.9</span> Performance Rate</h4>
-                                    <p><small class="text-muted"><i class="fa fa-clock-o" aria-hidden="true"></i> 11 hours ago via Twitter </small></p>
-                                </div>
-                                <div class="timeline-body"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor aliquam fugiat excepturi neque est modi ex dolores eaque esse optio commodi, animi similique ut iure nesciunt consectetur sed eos ad.</p></div>
-                            </div><!--end of timeline panel-->
-                        </li>
-                    </ul>
-                    
-                    
-                </div>
-            </div>
-        </section><!--end of timeline-->
-        <section id="why-this-trail">
-            <div class="why-this-trail">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12 text-center">
-                            <h2 class="section-title">Why the Ramayana Trail Matters</h2>
-                            <p class="under-heading">Cultural • Social • Environmental Impact</p>
-                        </div>
-                    </div>
-                    <div class="row" style="margin-top:30px;">
-                        <div class="col-md-3 text-center">
-                            <i class="fa fa-globe fa-3x"></i>
-                            <h4 style="margin-top:10px;">Cultural Diplomacy</h4>
-                            <p>Fosters cross-border cultural exchange and shared heritage stewardship.</p>
-                        </div>
-                        <div class="col-md-3 text-center">
-                            <i class="fa fa-handshake-o fa-3x"></i>
-                            <h4 style="margin-top:10px;">Green Pilgrimage Tourism</h4>
-                            <p>Promotes low-impact, non-motorised pilgrimage and respectful travel practices.</p>
-                        </div>
-                        <div class="col-md-3 text-center">
-                            <i class="fa fa-leaf fa-3x"></i>
-                            <h4 style="margin-top:10px;">Community Livelihoods</h4>
-                            <p>Supports local businesses, guides, homestays, and artisans.</p>
-                        </div>
-                        <div class="col-md-3 text-center">
-                            <i class="fa fa-users fa-3x"></i>
-                            <h4 style="margin-top:10px;">Heritage Preservation</h4>
-                            <p>Protects and documents Ramayana-linked sites and landscapes for future generations.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section id="contact-us">
-            <div class="contact-us">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12 wow bounceInDown">
-                            <h2 class="section-title">Partner With the Ramayana Trail</h2>
-                            <p class="under-heading">Institutions • Sponsors • Communities</p>
-                            <p class="text-muted" style="margin-top:8px;">This is a non-commercial, heritage-led initiative.</p>
-                        </div>
-                    </div>
-                </div>
-                                <div class="section-wrapper">
-                                        <div class="container" style="max-width:900px;">
-                                            <iframe
-                                                src="https://docs.google.com/forms/d/e/1FAIpQLScTvc6OwgF6QPp73pVZSycYpdtZnLM6hKBFUGDraSnY78Ev4w/viewform?embedded=true"
-                                                width="100%"
-                                                height="850"
-                                                frameborder="0"
-                                                marginheight="0"
-                                                marginwidth="0">
-                                                Loading…
-                                            </iframe>
-                                        </div>
-                                        <div class="container">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="social-icons wow slideInDown">
-                                    <ul class="list-unstyled">
-                                            <li><a href="https://www.facebook.com/Tourdekotte" target="_blank"><i class="fa fa-facebook fa-3x"></i></a></li>
-                                            <li><a href="https://x.com/tourdekotte" target="_blank"><i class="fa fa-twitter fa-3x"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-google-plus fa-3x"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-instagram fa-3x"></i></a></li>
-                                            <li><a href="https://www.youtube.com/@Tourdekotte" target="_blank"><i class="fa fa-youtube fa-3x"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-                </section>
-                <section id="footer">
-            <div class="footer-section">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <p class="footer-text">© Tour de Kotte | Indo–Lanka Ramayana Trail</p>
-                        </div>
-                        <div class="col-md-4">
-                            <p class="footer-text">Cycling • Culture • Community</p>
-                        </div>
-                        <div class="col-md-4">
-                            <p class="footer-text">A people-led initiative promoting sacred travel, heritage preservation, and unity through cycling.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="loading-overlay">
-       <div class="sk-cube-grid">
-        <div class="sk-cube sk-cube1"></div>
-        <div class="sk-cube sk-cube2"></div>
-        <div class="sk-cube sk-cube3"></div>
-        <div class="sk-cube sk-cube4"></div>
-        <div class="sk-cube sk-cube5"></div>
-        <div class="sk-cube sk-cube6"></div>
-        <div class="sk-cube sk-cube7"></div>
-        <div class="sk-cube sk-cube8"></div>
-        <div class="sk-cube sk-cube9"></div>
-       </div>
-       </section>
-       
-       
-       
-        <script src="js/jquery.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/plugins.js"></script>
-        <script src="js/jquery.counterup.min.js"></script>
-        <script src="js/jquery.waypoints.min.js"></script>
-        <script src="js/jquery.nicescroll.min.js"></script>
-                <script src="js/wow.min.js"></script>
-                <script>new WOW().init();</script>
-        </body>
+<div class="container">
+
+<h2 class="text-center mb-4">Latest News</h2>
+
+<div class="row">
+
+<div class="col-md-4">
+<div class="card p-3">
+<h5>Community Dialogue Program</h5>
+<p>Community leaders gathered for dialogue.</p>
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="card p-3">
+<h5>Youth Volunteer Project</h5>
+<p>Youth environmental cleanup program.</p>
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="card p-3">
+<h5>Tour de Kotte Ride</h5>
+<p>New cycling expedition launched.</p>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- CONTACT -->
+
+<section class="section bg-light" id="contact">
+
+<div class="container text-center">
+
+<h2>Contact</h2>
+
+<p>
+
+National Integration Division  
+Divisional Secretariat Sri Jayawardenepura Kotte  
+Ministry of Justice – Sri Lanka
+
+</p>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer class="bg-primary text-white text-center p-4">
+
+<p>© National Integration Division | Sri Jayawardenepura Kotte</p>
+
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<script>
+
+/* Search */
+
+document.getElementById("searchInput").addEventListener("keyup",function(){
+
+let filter=this.value.toLowerCase();
+
+let rows=document.querySelectorAll("#societyTable tr");
+
+rows.forEach((row,i)=>{
+
+if(i===0)return;
+
+row.style.display=row.textContent.toLowerCase().includes(filter)?"":"none";
+
+});
+
+});
+
+/* Map */
+
+var map=L.map('map').setView([6.9022,79.9090],13);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+
+L.marker([6.9022,79.9090]).addTo(map).bindPopup("Sri Jayawardenepura Kotte");
+
+</script>
+
+</body>
 </html>
